@@ -20,7 +20,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <NuxtWelcome />
+      <NuxtPage />
     </v-main>
     <v-footer
       class="bg-indigo-lighten-1 text-center d-flex flex-column"
