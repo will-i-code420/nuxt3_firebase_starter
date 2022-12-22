@@ -6,11 +6,10 @@
   <v-container>
     <v-row>
       <v-col>
-        <NuxtWelcome />
+        <h1>Page: Admin Home</h1>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<style lang="css" scoped>
-</style>
+<style scoped></style>

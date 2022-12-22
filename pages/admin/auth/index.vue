@@ -4,13 +4,12 @@
 
 <template>
   <v-container>
-    <v-row>
-      <v-col>
-        <NuxtWelcome />
+    <v-row justify="center">
+      <v-col cols="10">
+        <LoginForm />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<style lang="css" scoped>
-</style>
+<style scoped></style>
