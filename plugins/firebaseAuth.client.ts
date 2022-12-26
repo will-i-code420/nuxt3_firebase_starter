@@ -1,5 +1,9 @@
 import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "firebase/auth"
 
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig()
@@ -13,5 +17,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     measurementId: config.public.firebaseMeasurementId
   }
   const app = initializeApp(firebaseConfig)
-  //const auth = getAuth(app)
+  const auth = getAuth(app)
+  nuxtApp.provide('firebaseAuth', {
+    auth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
+  })
 })

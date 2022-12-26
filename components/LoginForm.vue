@@ -1,5 +1,7 @@
 <script setup>
+const emit = defineEmits(['login-user', 'register-user'])
 const form = ref(null)
+const formType = ref('login')
 const valid = ref(true)
 const email = ref('')
 const emailRules = ref([
@@ -9,7 +11,7 @@ const emailRules = ref([
 const password = ref('')
 const passwordRules = ref([
   v => !!v || 'Password Required',
-  v => (v && v.length >= 8) || 'Password must be longer than 8 characters',
+  v => (v && v.length >= 6) || 'Password must be longer than 6 characters',
   v => (v && v.length <= 32) || 'Password can\'t be more than 32 characters'
 ])
 const reset = () => {
@@ -17,8 +19,14 @@ const reset = () => {
 }
 const validate = async () => {
   const { valid } = await form.value.validate()
-  if (valid) {
-    alert('valid form')
+  if (valid && formType.value === 'login') {
+    const userCredentials = { email: email.value, password: password.value }
+    console.log('submitting login form')
+    emit('login-user', userCredentials)
+  } else if (valid && formType.value === 'login') {
+    const userCredentials = { email: email.value, password: password.value }
+    console.log('submitting registration form')
+    emit('register-user', userCredentials)
   }
 }
 const resetValidation = () => {
@@ -51,7 +59,7 @@ const resetValidation = () => {
       class="mr-4"
       @click="validate"
     >
-      Validate
+      {{ formType === 'login' ? 'Login' : 'Register'}}
     </v-btn>
     <v-btn
       color="error"
