@@ -1,5 +1,4 @@
 import {
-
   onAuthStateChanged
 } from "firebase/auth"
 
@@ -12,7 +11,7 @@ export const useFirebaseAuth = async (action, email, password) => {
         credentials = await $firebaseAuth.signInWithEmailAndPassword($firebaseAuth.auth, email, password)
         break;
       case 'register':
-        credentials = await createUserWithEmailAndPassword($firebaseAuth, email, password)
+        credentials = await $firebaseAuth.createUserWithEmailAndPassword($firebaseAuth.auth, email, password)
         break;
       default:
       return
