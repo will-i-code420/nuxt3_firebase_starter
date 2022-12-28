@@ -13,9 +13,15 @@ export const useFirebaseAuth = async (action, email, password) => {
       case 'register':
         credentials = await $firebaseAuth.createUserWithEmailAndPassword($firebaseAuth.auth, email, password)
         break;
+      case 'logout':
+        credentials = await $firebaseAuth.auth.signOut()
+        break;
       default:
       return
         break;
+    }
+    if (action === 'logout') {
+      return ref(credentials)
     }
     const user = credentials.user
     return ref({ user })
