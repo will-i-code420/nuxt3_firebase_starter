@@ -12,7 +12,9 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.6",
     "firebase": "^9.15.0",
+    "pinia": "^2.0.28",
     "vite-plugin-vuetify": "^1.0.1",
     "vuetify": "^3.0.5"
   }

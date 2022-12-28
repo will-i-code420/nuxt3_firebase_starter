@@ -1240,7 +1240,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:3.0.0, @nuxt/kit@npm:^3.0.0-rc.14":
+"@nuxt/kit@npm:3.0.0, @nuxt/kit@npm:^3.0.0, @nuxt/kit@npm:^3.0.0-rc.14":
   version: 3.0.0
   resolution: "@nuxt/kit@npm:3.0.0"
   dependencies:
@@ -1363,6 +1363,16 @@ __metadata:
   peerDependencies:
     vue: ^3.2.45
   checksum: 2ff4cd305231579936418c67174f98821460760ccd93c4e342807be96a18f984c6f5a6cf75d34a35ed3c5da454e2a325affd87058aea433df313a9b17ec58b27
+  languageName: node
+  linkType: hard
+
+"@pinia/nuxt@npm:^0.4.6":
+  version: 0.4.6
+  resolution: "@pinia/nuxt@npm:0.4.6"
+  dependencies:
+    "@nuxt/kit": ^3.0.0
+    pinia: ">=2.0.27"
+  checksum: 570a918695922ee38b7ae741f0eac96a33917f251d112c83e4a2486cc768bf257825a6e497d7bd7852122a7afa42d4d8e3e79438497b8fa76f9cf50a89ecb73c
   languageName: node
   linkType: hard
 
@@ -5471,6 +5481,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pinia@npm:>=2.0.27, pinia@npm:^2.0.28":
+  version: 2.0.28
+  resolution: "pinia@npm:2.0.28"
+  dependencies:
+    "@vue/devtools-api": ^6.4.5
+    vue-demi: "*"
+  peerDependencies:
+    "@vue/composition-api": ^1.4.0
+    typescript: ">=4.4.4"
+    vue: ^2.6.14 || ^3.2.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+    typescript:
+      optional: true
+  checksum: d515cd6220262560f1864855ab117bd16e4bf4ab3d6d279459281aa16960b5e84b6ddd4de3f1d863040a81539378451c1a14fddd32e7571b51e5d1c95911154d
+  languageName: node
+  linkType: hard
+
 "pkg-dir@npm:^4.1.0":
   version: 4.2.0
   resolution: "pkg-dir@npm:4.2.0"
@@ -6206,8 +6235,10 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@mdi/font": ^7.1.96
+    "@pinia/nuxt": ^0.4.6
     firebase: ^9.15.0
     nuxt: 3.0.0
+    pinia: ^2.0.28
     vite-plugin-vuetify: ^1.0.1
     vuetify: ^3.0.5
   languageName: unknown
@@ -7161,6 +7192,22 @@ __metadata:
   dependencies:
     ufo: ^1.0.0
   checksum: c1e399dcf81190b433a31be24c019354ff566f43e1d1d1dc6e1f6acb6d7ed52645445e93635d01fb7ea68cb0a11ad5487a98fd70b3a6a302bd3b1660b814c5de
+  languageName: node
+  linkType: hard
+
+"vue-demi@npm:*":
+  version: 0.13.11
+  resolution: "vue-demi@npm:0.13.11"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^3.0.0-0 || ^2.6.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  bin:
+    vue-demi-fix: bin/vue-demi-fix.js
+    vue-demi-switch: bin/vue-demi-switch.js
+  checksum: 0fbe9bf8ab7fe498ffa2bbd0cfc8f6f43a6bbaa5eda3e20ef1b70dca7c8b0ddb216a7ff2f632b694fe0735805638975abb441c621ec0bd2e6d4656353f316c15
   languageName: node
   linkType: hard
 
