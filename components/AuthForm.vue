@@ -63,7 +63,7 @@ const resetValidation = () => {
       class="mr-4"
       @click="validate"
     >
-      {{ formType === 'login' ? 'Login' : 'Register'}}
+      {{ props.formType.toUpperCase() }}
     </v-btn>
     <v-btn
       color="error"

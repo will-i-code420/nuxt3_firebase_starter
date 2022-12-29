@@ -11,7 +11,6 @@ const submitUser = async (userData) => {
   <v-container>
     <v-row justify="center">
       <v-col cols="10">
-        <h1>{{$route.params.auth}}</h1>
         <AuthForm :formType='$route.params.auth' @submit-user="submitUser" />
       </v-col>
     </v-row>
