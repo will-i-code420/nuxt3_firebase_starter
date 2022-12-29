@@ -53,7 +53,9 @@ const drawer = ref(false)
 const drawerItems = reactive([
   { icon: '', title: 'Data', link: '/data' },
   { icon: '', title: 'About', link: '/about' },
-  { icon: '', title: 'Contact', link: '/contact' }
+  { icon: '', title: 'Contact', link: '/contact' },
+  { icon: '', title: 'Login', link: '/admin/login' },
+  { icon: '', title: 'Register', link: '/admin/register' }
 ])
 const icons = reactive([
   'mdi-facebook',

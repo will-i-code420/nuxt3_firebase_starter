@@ -1,7 +1,15 @@
 <script setup>
-const emit = defineEmits(['login-user', 'register-user'])
+const props = defineProps({
+  formType: {
+    type: String,
+    required: true,
+    validator(val) {
+      return ['login', 'register'].includes(val)
+    }
+  }
+})
+const emit = defineEmits(['submit-user'])
 const form = ref(null)
-const formType = ref('login')
 const valid = ref(true)
 const email = ref('')
 const emailRules = ref([
@@ -19,14 +27,10 @@ const reset = () => {
 }
 const validate = async () => {
   const { valid } = await form.value.validate()
-  if (valid && formType.value === 'login') {
-    const userCredentials = { email: email.value, password: password.value }
-    console.log('submitting login form')
-    emit('login-user', userCredentials)
-  } else if (valid && formType.value === 'login') {
-    const userCredentials = { email: email.value, password: password.value }
-    console.log('submitting registration form')
-    emit('register-user', userCredentials)
+  if (valid) {
+    const userCredentials = { formType: props.formType, email: email.value, password: password.value }
+    console.log(`submitting ${props.formType} form`)
+    emit('submit-user', userCredentials)
   }
 }
 const resetValidation = () => {
