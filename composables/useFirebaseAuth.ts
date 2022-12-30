@@ -16,19 +16,23 @@ export const useFirebaseAuth = async (action, email, password) => {
       case 'logout':
         credentials = await $firebaseAuth.auth.signOut()
         break;
+      case 'token':
+        const token = await $firebaseAuth.auth.currentUser.getIdToken()
+        return token
+        break;
       default:
       return
         break;
     }
     if (action === 'logout') {
-      return ref(credentials)
+      return credentials
     }
     const user = credentials.user
-    return ref({ user })
+    return user
   } catch (e) {
     const errCode = e.code
     const errMsg = e.message
-    return ref({ errCode, errMsg })
+    return [ errCode, errMsg ]
   }
 }
 

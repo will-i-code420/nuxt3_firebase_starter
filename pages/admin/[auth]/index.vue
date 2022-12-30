@@ -1,9 +1,14 @@
 <script setup>
-const route = useRoute()
+import { useUserStore } from '../../../store/user.ts'
+const userStore = useUserStore()
+const router = useRouter()
 const submitUser = async (userData) => {
-  const { formType, email, password } = userData
-  const user = await useFirebaseAuth(formType, email, password)
-  console.log(user.value)
+  try {
+    await userStore.handleAuthForm(userData)
+    router.push('/admin')
+  } catch (e) {
+    console.log(e)
+  }
 }
 </script>
 
