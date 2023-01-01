@@ -1,3 +1,20 @@
+<script setup>
+import { useUserStore } from './store/user.ts'
+const userStore = useUserStore()
+const drawer = ref(false)
+const drawerItems = ref([
+  { icon: '', title: 'Data', link: '/data' },
+  { icon: '', title: 'About', link: '/about' },
+  { icon: '', title: 'Contact', link: '/contact' }
+])
+const icons = ref([
+  'mdi-facebook',
+  'mdi-twitter',
+  'mdi-linkedin',
+  'mdi-instagram'
+])
+</script>
+
 <template>
   <v-app>
     <v-app-bar :elevation="2">
@@ -10,6 +27,32 @@
         >
           <v-btn>{{ item.title }}</v-btn>
         </NuxtLink>
+        <v-spacer></v-spacer>
+        <div v-if="!userStore.isAuth">
+          <NuxtLink
+            to="/admin/login"
+            class="mx-3 hidden-sm-and-down"
+          >
+            <v-btn>Login</v-btn>
+          </NuxtLink>
+          <NuxtLink
+            to="/admin/register"
+            class="mx-3 hidden-sm-and-down"
+          >
+            <v-btn>Register</v-btn>
+          </NuxtLink>
+        </div>
+        <div v-else>
+          <NuxtLink
+            to="/admin/profile"
+            class="mx-3 hidden-sm-and-down"
+          >
+            <v-btn>Profile</v-btn>
+          </NuxtLink>
+          <v-btn @click="userStore.logoutUser">
+            Logout
+          </v-btn>
+        </div>
         <v-app-bar-nav-icon
           @click.stop="drawer = !drawer"
           class="hidden-md-and-up"
@@ -34,33 +77,13 @@
           variant="text"
         ></v-btn>
       </div>
-
       <div class="pt-0">
         Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
       </div>
-
       <v-divider></v-divider>
-
       <div>
         {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
       </div>
     </v-footer>
   </v-app>
 </template>
-
-<script setup>
-const drawer = ref(false)
-const drawerItems = reactive([
-  { icon: '', title: 'Data', link: '/data' },
-  { icon: '', title: 'About', link: '/about' },
-  { icon: '', title: 'Contact', link: '/contact' },
-  { icon: '', title: 'Login', link: '/admin/login' },
-  { icon: '', title: 'Register', link: '/admin/register' }
-])
-const icons = reactive([
-  'mdi-facebook',
-  'mdi-twitter',
-  'mdi-linkedin',
-  'mdi-instagram'
-])
-</script>

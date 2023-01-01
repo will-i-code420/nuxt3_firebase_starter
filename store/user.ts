@@ -13,13 +13,13 @@ export const useUserStore = defineStore('userStore', () => {
     } catch (e) {
       console.log(e)
     }
-  },
+  }
   async function logoutUser() {
     const res = await useFirebaseAuth('logout')
     user.value = null
-  },
+  }
   function updateUser(user) {
     user.value = user
   }
-  return { user, isAuth, loginUser, logoutUser }
+  return { user, isAuth, handleAuthForm, logoutUser }
 })

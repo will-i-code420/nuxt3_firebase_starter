@@ -1,10 +1,8 @@
-import {
-  onAuthStateChanged
-} from "firebase/auth"
+import { useUserStore } from '../store/user.ts'
 
 export const useFirebaseAuth = async (action, email, password) => {
+  const { $firebaseAuth } = useNuxtApp()
   try {
-    const { $firebaseAuth } = useNuxtApp()
     let credentials
     switch (action) {
       case 'login':
