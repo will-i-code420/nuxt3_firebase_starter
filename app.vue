@@ -1,6 +1,7 @@
 <script setup>
 import { useUserStore } from './store/user.ts'
 const userStore = useUserStore()
+const router = useRouter()
 const drawer = ref(false)
 const drawerItems = ref([
   { icon: '', title: 'Data', link: '/data' },
@@ -13,6 +14,14 @@ const icons = ref([
   'mdi-linkedin',
   'mdi-instagram'
 ])
+const logout = async () => {
+  try {
+    await userStore.logoutUser
+    router.push("/")
+  } catch (e) {
+    console.log(e)
+  }
+}
 </script>
 
 <template>
@@ -49,7 +58,7 @@ const icons = ref([
           >
             <v-btn>Profile</v-btn>
           </NuxtLink>
-          <v-btn @click="userStore.logoutUser">
+          <v-btn @click="logout">
             Logout
           </v-btn>
         </div>
