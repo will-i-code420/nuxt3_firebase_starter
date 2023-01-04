@@ -1,5 +1,11 @@
+import { useUserStore } from '../store/user.ts'
+
 export default defineNuxtPlugin((nuxtApp) => {
+  const userStore = useUserStore()
   addRouteMiddleware('auth', () => {
-    console.log('this named middleware was added in a plugin and would override any existing middleware of the same name')
+    console.log('auth middleware')
+    if (!userStore.isAuth) {
+      return navigateTo('/admin/login')
+    }
   })
 })
