@@ -18,6 +18,11 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
   const app = initializeApp(firebaseConfig)
   const auth = getAuth(app)
+  nuxtApp.vueApp.provide('firebaseAuth', {
+    auth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
+  })
   nuxtApp.provide('firebaseAuth', {
     auth,
     createUserWithEmailAndPassword,
