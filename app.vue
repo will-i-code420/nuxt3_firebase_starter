@@ -1,6 +1,8 @@
 <script setup>
+import { storeToRefs } from 'pinia'
 import { useUserStore } from './store/user.ts'
 const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
 const router = useRouter()
 const drawer = ref(false)
 const drawerItems = ref([
@@ -16,7 +18,7 @@ const icons = ref([
 ])
 const logout = async () => {
   try {
-    await userStore.logoutUser
+    await userStore.logoutUser()
     router.push("/")
   } catch (e) {
     console.log(e)
@@ -53,7 +55,7 @@ const logout = async () => {
         </div>
         <div v-else>
           <NuxtLink
-            to="/admin/profile"
+            :to="`/admin/${user.uid}-profile`"
             class="mx-3 hidden-sm-and-down"
           >
             <v-btn>Profile</v-btn>

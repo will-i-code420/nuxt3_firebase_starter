@@ -8,7 +8,7 @@ const props = defineProps({
     }
   }
 })
-const emit = defineEmits(['submit-user'])
+const emit = defineEmits(['submit-auth'])
 const form = ref(null)
 const valid = ref(true)
 const email = ref('')
@@ -29,8 +29,7 @@ const validate = async () => {
   const { valid } = await form.value.validate()
   if (valid) {
     const userCredentials = { formType: props.formType, email: email.value, password: password.value }
-    console.log(`submitting ${props.formType} form`)
-    emit('submit-user', userCredentials)
+    emit('submit-auth', userCredentials)
   }
 }
 const resetValidation = () => {

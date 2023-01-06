@@ -8,7 +8,7 @@ definePageMeta({
   <v-container>
     <v-row>
       <v-col>
-        <h1>Page: Admin Profile</h1>
+        <h1>Page: {{ $route.params.user }} Profile</h1>
       </v-col>
     </v-row>
   </v-container>

@@ -2,7 +2,7 @@
 import { useUserStore } from '../../../store/user.ts'
 const userStore = useUserStore()
 const router = useRouter()
-const submitUser = async (userData) => {
+const submitAuth = async (userData) => {
   try {
     await userStore.handleAuthForm(userData)
     router.push('/admin')
@@ -16,7 +16,7 @@ const submitUser = async (userData) => {
   <v-container>
     <v-row justify="center">
       <v-col cols="10">
-        <AuthForm :formType='$route.params.auth' @submit-user="submitUser" />
+        <AuthForm :formType='$route.params.auth' @submit-auth="submitAuth" />
       </v-col>
     </v-row>
   </v-container>

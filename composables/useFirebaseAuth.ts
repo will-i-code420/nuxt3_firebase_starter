@@ -2,8 +2,8 @@ import { useUserStore } from '../store/user.ts'
 
 export const useFirebaseAuth = async (action, email, password) => {
   const { $firebaseAuth } = useNuxtApp()
+  let credentials
   try {
-    let credentials
     switch (action) {
       case 'login':
         credentials = await $firebaseAuth.signInWithEmailAndPassword($firebaseAuth.auth, email, password)
@@ -13,6 +13,7 @@ export const useFirebaseAuth = async (action, email, password) => {
         break;
       case 'logout':
         credentials = await $firebaseAuth.auth.signOut()
+        return credentials
         break;
       case 'token':
         const token = await $firebaseAuth.auth.currentUser.getIdToken()
@@ -21,9 +22,6 @@ export const useFirebaseAuth = async (action, email, password) => {
       default:
       return
         break;
-    }
-    if (action === 'logout') {
-      return credentials
     }
     const user = credentials.user
     return user

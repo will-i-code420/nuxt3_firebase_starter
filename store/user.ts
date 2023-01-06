@@ -3,7 +3,6 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore('userStore', () => {
   const user = ref(null)
   const isAuth = computed(() => user.value ? true : false)
-  const getUserInfo = computed(() => user.value)
   async function handleAuthForm(userData) {
     try {
       const { formType, email, password } = userData
@@ -15,8 +14,7 @@ export const useUserStore = defineStore('userStore', () => {
     }
   }
   async function logoutUser() {
-    const res = await useFirebaseAuth('logout')
-    user.value = null
+    user.value = await useFirebaseAuth('logout')
   }
   function updateUser(user) {
     user.value = user
