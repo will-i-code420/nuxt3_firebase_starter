@@ -1,5 +1,3 @@
-import { useUserStore } from '../store/user.ts'
-
 export const useFirebaseAuth = async (action, email, password) => {
   const { $firebaseAuth } = useNuxtApp()
   let credentials
@@ -20,7 +18,7 @@ export const useFirebaseAuth = async (action, email, password) => {
         return token
         break;
       default:
-      return
+        return
         break;
     }
     const user = credentials.user
