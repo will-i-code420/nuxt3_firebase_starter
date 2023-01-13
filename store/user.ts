@@ -19,5 +19,5 @@ export const useUserStore = defineStore('userStore', () => {
   function updateUser(user) {
     user.value = user
   }
-  return { user, isAuth, handleAuthForm, logoutUser }
+  return { user, isAuth, handleAuthForm, logoutUser, updateUser }
 })
